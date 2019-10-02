@@ -62,6 +62,9 @@
  	echo checkDay(1);
 
  	// bai 3
+ 	echo "<br>";
+ 	echo  "======== bai 3 =========";
+ 	echo "<br>";
 	function checkDay2($n) {
  		global $week;
  		switch (isset($week[$n])) {
@@ -87,7 +90,10 @@
  		$n++;
  	}
 
-
+ 	// bai 4
+ 	echo "<br>";
+ 	echo  "======== bai 4 =========";
+ 	echo "<br>";
  	function bai4() {
  		for ($i=0; $i <= 100; $i++) { 
  			echo "<br>";
@@ -103,4 +109,58 @@
 	 	}
  	}
  	bai4();
+
+ 	// bai 5
+ 	echo "<br>";
+ 	echo  "======== bai 5 =========";
+ 	echo "<br>";
+ 	$binh = 27;
+ 	$minh = $binh / 3;
+ 	$numberBook = 0;
+ 	while ($binh != $minh * 2) {
+ 		$binh --;
+ 		$minh ++;
+ 		$numberBook++;
+ 	}
+ 	echo $numberBook;
+
+ 	// bai 6
+ 	echo "<br>";
+ 	echo  "======== bai 6 =========";
+ 	echo "<br>";
+ 	$monny = 0;
+ 	$candyShell = 0;
+ 	$numberCandy = 0;
+ 
+ 	while ($monny < 2000) {
+ 		$monny += 200;
+ 		$candyShell ++;
+ 		$numberCandy ++;
+ 		if($numberCandy % 2 == 0){
+ 			$numberCandy ++;
+ 			$candyShell = 0;
+ 		}
+ 	}
+ 	echo $numberCandy;
+
+ 	// bai 7
+ 	echo "<br>";
+ 	echo  "======== bai 7 =========";
+ 	echo "<br>";
+
+ 	$candy = 0;
+ 	
+ 	$usdStart = 0
+ /*	while ($candy > 50) {
+ 		$usdStart += 5;
+ 		$euro += 3;
+ 		$usd = 0;
+ 		$candy ++;
+ 		while ($euro > 0) {
+ 			$euro -= 2;
+ 			$usd += 5;
+ 			$candy ++;
+ 		}
+
+ 	}*/
   ?>
