@@ -147,20 +147,55 @@
  	echo "<br>";
  	echo  "======== bai 7 =========";
  	echo "<br>";
-
- 	$candy = 0;
+ 	$keo = 0;
  	
- 	$usdStart = 0
- /*	while ($candy > 50) {
+ 	$usdStart = 0;
+ 	while ($keo < 50) {
  		$usdStart += 5;
- 		$euro += 3;
+ 		$tam = $usdStart / 5;
+ 		$euro = $tam * 3;
  		$usd = 0;
- 		$candy ++;
- 		while ($euro > 0) {
- 			$euro -= 2;
- 			$usd += 5;
- 			$candy ++;
- 		}
+ 		$keo = $tam;
+		
+ 		while(($euro > 0) || ($usd > 0)){
+ 			if($keo >= 50){
+ 				break;
+ 			}
+ 			if($euro >= 2){
+ 				$tam = floor($euro / 2);
+ 				$usd += $tam * 3;
+ 				$euro -= $tam * 2;
+ 				$keo += $tam;
+ 			} else if($usd >= 5) {
+ 				$tam = floor($usd / 5); 				
+ 				$euro += $tam * 3;
+ 				$usd -= $tam * 5;
+ 				$keo += $tam;
+ 			}else{
+ 				break;
+ 			}
+ 		}		
+ 	}
+ 	echo "Số đô la ban đầu là $usdStart dư $usd";
 
- 	}*/
+ 	// bai 8
+ 	echo "<br>";
+ 	echo  "======== bai 8 =========";
+ 	echo "<br>";
+ 
+ 	$red = 50;
+ 	$array = [];
+ 	for ($green = 0; $green < 50; $green++ ) { 
+ 		if(2*$green/5 + 3/4*$red == 27){
+ 			$array[] = ["green" => $green, "red" => $red];
+ 		}
+ 		$red--;
+ 	}
+ 	echo "<pre>";
+ 	print_r($array);
+ 	echo "</pre>";
+
+ 	echo "=======================";
+ 	
+
   ?>
