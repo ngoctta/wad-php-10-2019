@@ -186,7 +186,7 @@
  	$red = 50;
  	$array = [];
  	for ($green = 0; $green < 50; $green++ ) { 
- 		if(2*$green/5 + 3/4*$red == 27){
+ 		if(2 * $green / 5 + 3 / 4 * $red == 27){
  			$array[] = ["green" => $green, "red" => $red];
  		}
  		$red--;
@@ -195,7 +195,62 @@
  	print_r($array);
  	echo "</pre>";
 
- 	echo "=======================";
- 	
+	// bai 10
+ 	echo "<br>";
+ 	echo  "======== bai 10 =========";
+ 	echo "<br>";
+ 	echo "<table>";
+ 	for ($i = 0; $i < 8; $i++) { 
+ 		echo "<tr>";
+ 		for ($j = 0; $j < 4; $j++) { 
+ 			if($i % 2 == 0){
+ 				echo '<td style="background:black; width: 20px; height: 20px;"></td>';
+ 				echo '<td style="background:blue;width: 20px; height: 20px;"></td>';
+ 			}else{
+ 				echo '<td style="background:blue; width: 20px; height: 20px;"></td>';
+ 				echo '<td style="background:black;width: 20px; height: 20px;"></td>';
+ 			}
+ 		}
+ 		echo "</tr>";
+ 	}
+ 	echo "</table>";
+
+ 	// bai 11
+ 	echo "<br>";
+ 	echo  "======== bai 11 =========";
+ 	echo "<br>";
+ 	$line = 1;
+ 	$dem = 0;
+ 	for ($i=1; $i <= 10 ; $i++) { 
+ 		echo $i ;
+ 		$dem++;
+ 		if($line == $dem){
+ 			$line++;
+ 			$dem = 0;
+ 			echo "<br>";
+ 		}
+ 	}
+
+ 	// bai 12
+ 	echo "<br>";
+ 	echo  "======== bai 12 =========";
+ 	echo "<br>";
+ 	$numberStarInLine = 1;
+ 	$num = 1;
+ 	$n = 5;
+ 	$nlast = $n * 2 - 1;
+ 	for ($i = $n; $i > 0 ; $i--) { 
+ 		for ($j = 1; $j <= $n * 2 -1; $j++) { 
+ 			if($num <= $numberStarInLine && $j >= $i){
+				echo "*";
+				$num++;
+			}else{
+				echo "&#160;&#160;";
+			} 								
+ 		}	
+ 		$num = 1;	
+ 		$numberStarInLine += 2;
+ 		echo "<br>";
+ 	}
 
   ?>
