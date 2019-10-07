@@ -12,7 +12,8 @@
 <body>
 	<?php 
 		$is_show_info = false;
-		$cities = ['Da Nang', 'Quang Nam', 'Hue', 'Ha Tinh', 'Ha Noi' ]; 
+		$cities = [1 => 'Da Nang', 
+					2 => 'Quang Nam', 3 => 'Hue', 4 => 'Ha Tinh', 5 => 'Ha Noi' ]; 
 		$input_required = ['fullName', 'address', 'city', 'gender', 'date-start', 'date-finish', 'start-electricity', 'finish-electricity'];
 
 		$error = [];
@@ -66,6 +67,7 @@
 			      	<label for="city">City:</label>
 			      	
 			      	<select name="city" id="city" class="form-control">
+			      			<option value="" >---Select ---</option>
 			      		<?php foreach ($cities as $k => $city) : ?>
 			      			<option value="<?php echo $k; ?>" <?php echo (isset($_POST['city']) && $_POST['city'] == $k) ? 'selected' : '' ?>><?php echo $city; ?></option>
 			      		<?php endforeach ; ?>			      		
