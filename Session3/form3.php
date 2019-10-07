@@ -114,7 +114,7 @@
 			<p>Date Finish: <?php echo $_POST['date-finish']; ?></p>
 			<p>Start electricity: <?php echo $_POST['start-electricity']; ?></p>
 			<p>Finish electricity: <?php echo $_POST['finish-electricity']; ?></p>
-			<p><b>Tổng tiền điện: </b> <?php echo $money ?></p>
+			<p><b>Tổng tiền điện: </b> <?php echo number_format($money) ?></p>
 	  	<?php endif; ?>
 	</div>
 </body>
