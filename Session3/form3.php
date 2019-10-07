@@ -50,7 +50,7 @@
 	<div class="container">
 	  	<?php if($is_show_info == false): ?>
 	  		<h2>Form</h2>
-		  	<form action="/WAD_PHP/Session3/form3.php" method="post">
+		  	<form action="#" method="post">
 			    <div class="form-group">
 			      	<label for="fullName">Full name:</label>
 			      	<input type="text" class="form-control" id="fullName" placeholder="Enter Full name" name="fullName" value="<?php echo isset($_POST['fullName']) ? $_POST['fullName'] : '' ?>">
