@@ -14,7 +14,7 @@
 		$is_show_info = false;
 		$cities = [1 => 'Da Nang', 
 					2 => 'Quang Nam', 3 => 'Hue', 4 => 'Ha Tinh', 5 => 'Ha Noi' ]; 
-		$input_required = ['fullName', 'address', 'city', 'gender', 'date-start', 'date-finish', 'start-electricity', 'finish-electricity'];
+		$input_required = ['fullName', 'address', 'city', 'gender', 'date-start', 'date-finish', 'start-electricity', 'finish-electricity', 'avatar'];
 
 		$error = [];
 		if(isset($_POST['submit'])){
@@ -33,6 +33,15 @@
 				$error['start-electricity'] = "finish-electricity than bigger start-electricity";
 				$error['finish-electricity'] = "start-electricity than smaller finish-electricity";
 			}
+			if(!empty($_FILES["avatar"])){
+				$target_dir = "uploads/";
+				$target_file = $target_dir . basename($_FILES["avatar"]["name"]);
+				if (!move_uploaded_file($_FILES["avatar"]["tmp_name"], $target_file)) {
+			        $error['avatar'] "there was an error uploading your file.";
+			    }
+			}
+			
+			var_dump($_FILES['avatar']);
 			if(count($error) == 0){
 				$is_show_info = true;
 				$money = 0;
@@ -50,7 +59,7 @@
 	<div class="container">
 	  	<?php if($is_show_info == false): ?>
 	  		<h2>Form</h2>
-		  	<form action="#" method="post">
+		  	<form action="#" method="post"  enctype="multipart/form-data">
 			    <div class="form-group">
 			      	<label for="fullName">Full name:</label>
 			      	<input type="text" class="form-control" id="fullName" placeholder="Enter Full name" name="fullName" value="<?php echo isset($_POST['fullName']) ? $_POST['fullName'] : '' ?>">
@@ -102,7 +111,11 @@
 			      	<input type="number" class="form-control" id="finish-electricity" placeholder="Enter finish electricity" name="finish-electricity" value="<?php echo isset($_POST['finish-electricity']) ? $_POST['finish-electricity'] : '' ?>">
 			      	<p class="text-danger"><?php echo isset($error['finish-electricity']) ? $error['finish-electricity'] : '' ?></p>
 			    </div>
-			    <button type="submit" class="btn btn-default" name="submit">Submit</button>
+			    <div class="form-group">
+			    	<label for="fileToUpload">Select image to upload:</label>
+    				<input type="file" name="avatar" id="fileToUpload" accept="image/x-png,image/gif,image/jpeg">
+			    </div>
+			    <button type="submit" class="btn btn-default" name="submit" >Submit</button>
 		  	</form>
 	  	<?php else : ?>
 			<h2>PHIẾU TÍNH TIỀN ĐIỆN</h2>
@@ -115,6 +128,9 @@
 			<p>Start electricity: <?php echo $_POST['start-electricity']; ?></p>
 			<p>Finish electricity: <?php echo $_POST['finish-electricity']; ?></p>
 			<p><b>Tổng tiền điện: </b> <?php echo number_format($money) ?></p>
+			<div class="">
+				<img src="" alt="" >
+			</div>
 	  	<?php endif; ?>
 	</div>
 </body>
