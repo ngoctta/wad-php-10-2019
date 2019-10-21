@@ -29,6 +29,9 @@
   <?php include 'common/sidebar.php';?>
   <?php include 'connect.php';?>
   <?php 
+    $sql = "SELECT * FROM product_categories";
+    $category = mysqli_query($connect, $sql);
+
     $id = $_GET['id_edit'];
     $sql = "SELECT * FROM products WHERE id = $id";
     $result = mysqli_query($connect, $sql);
@@ -37,12 +40,19 @@
     $oldDescription = $row['description'];
     $oldPrice = $row['price'];
     $oldDiscount = $row['discount'];
+    $oldCategoryId = $row['product_category_id'];
    
     $input_required = ['title', 'description', 'price', 'discount'];
     $input_number = ['price', 'discount'];
     if(isset($_POST['edit_product'])) {
       $title = $_POST['title'];
-      $sql = "UPDATE products SET title = '$title' WHERE id =$id";
+      $description = $_POST['description'];
+      $price = $_POST['price'];
+      $discount = $_POST['discount'];
+      $categoryId = $_POST['category'];
+      $sql = "UPDATE products SET title = '$title', description = '$description', price = '$price', discount = '$discount', 'product_category_id' = '$category' WHERE id =$id";
+      echo $sql;
+      die();
       if (mysqli_query($connect, $sql) === TRUE) {
         header("Location: list_product.php");
       }
@@ -133,7 +143,17 @@
                                 value="<?php echo isset($_POST['title']) ? $_POST['title'] : $oldTitle ?>">
                           <p class="text-danger"><?php echo isset($error['title']) ? $error['title'] : '' ?></p>
                         </div>
-                      
+
+                        <div class="form-group">
+                          <select class="form-control" id="gender1" name="category">
+                            <option value="">---</option>
+                             <?php if ($category->num_rows > 0) {?>
+                              <?php while($row = $category->fetch_assoc()){?>
+                                <option value="<?= $row['id'] ?>" <?= $oldCategoryId==$row['id'] ? 'selected' :'' ?>><?= $row['name'] ?></option>
+                              <?php }?>
+                            <?php }?>             
+                          </select>     
+                        </div>
                         <div class="form-group">
                           <input type="text" class="form-control form-control-user" 
                                 name="description" 
