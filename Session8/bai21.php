@@ -32,6 +32,7 @@
 	 */
 	class Customer extends User
 	{
+		public $address, $no;
 		public function Checkout(){
 			return 'Checkout';
 		}
