@@ -20,13 +20,12 @@ tr:nth-child(even) {
 <p><a href="index.php?action=logout">Logout</a></p>
 <table>
   <tr>
-  	 <th>id</th>
-    <th>Title</th>
-    <th>Category</th>
-    <th>Description</th>
-    <th>Image</th>
-    <th>Edit</th>
-    <th>Delete</th>
+  	 <th>Id</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Role</th>
+    <th>Username</th>
+
   </tr>
 
   <?php  while ($row = mysqli_fetch_array($users)) { ?>
@@ -36,8 +35,7 @@ tr:nth-child(even) {
         <th><?= $row['email'] ?></th>
         <th><?= $row['role'] ?></th>
         <th><?= $row['username'] ?></th>
-        <th><a href="?action=edit_product&id=<?= $row['id'] ?>">Edit</a></th>
-        <th><a href="?action=delete_product&id=<?= $row['id'] ?>">Delete</a></th>
+       
       </tr>
     <?php } ?>
  <tr>
