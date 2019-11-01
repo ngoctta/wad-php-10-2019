@@ -3,7 +3,8 @@
 	class Controller {
 		public function handleRequest() {
 			$action = isset($_GET['action'])?$_GET['action']:'home';
-			$id = isset($_GET['user_id'])?$_GET['user_id']:null;
+			$id = isset($_GET['user_id'])?$_GET['user_id']:'';
+
 			$model = new Model();
 			switch ($action) {
 				case 'home':
@@ -28,8 +29,6 @@
 					include 'view/contact.php';
 					break;
 				case 'add_user':
-					// Check login
-		
 					// End check login
 					if (isset($_POST['add_user'])) {
 						$p = $_POST;
@@ -38,49 +37,17 @@
 					}
 					include 'view/add_user.php';
 					break;	
-				/*case 'delete_product':
-
-					// Check login
-					if (!isset($_SESSION['login'])) {
-						header('Location: index.php?action=login');
-					}
-					$id = isset($_GET['id'])?$_GET['id']:null;
-					// End check login
-					if (isset($id)) {
-						$delete = $model->deleteProduct($id);
-						header('Location: index.php?action=products');
-					}
-					include 'view/add_product.php';
-					break;	*/
-				case 'detail_product':
-					
-
-					// End check login
-					if (isset($id)) {
 				
+				case 'detail_product':
+					//var_dump($id);
+
+					if (isset($id)) {
 						$product = $model->getProductById($id);
-						var_dump($product);
-						header('Location: index.php?action=detail_product');
+					
 					}
 					include 'view/detail_product.php';
 					break;	
-				case 'login':
-					$errorLogin = '';
-					if (isset($_POST['login'])) {
-						$username = $_POST['username'];
-						$password = md5($_POST['password']);
-						if (!empty($model->checkLogin($username, $password))) {
-							$_SESSION['login'] = $username;
-							header('Location: index.php?action=products');
-						}
-						$errorLogin = 'Wrong username or password';
-					}
-					include 'view/login.php';
-					break;
-				case 'logout':
-					unset($_SESSION['login']);
-					header('Location: index.php?action=login');
-					break;
+			
 				default:
 					include 'view/home.php';
 					break;

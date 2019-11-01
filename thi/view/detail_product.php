@@ -1,5 +1,6 @@
-<h2>Detail product</h2>
-
+<h2>Detail</h2>
+<table>
+<?php $product = mysqli_fetch_array($product) ?>
 	<tr>
 		<td>Name</td>
 		<td><?= $product['name'] ?></td>
@@ -10,7 +11,7 @@
 	</tr>
 	<tr>
 		<td>Image</td>
-		<td><?= $product['image'] ?></td>
+		<td><img src="<?= $product['images'] ?>" alt=""></td>
 	</tr>
 	<tr>
 		<td>Price</td>

@@ -36,7 +36,7 @@ tr:nth-child(even) {
         <th><?= $row['description'] ?></th>
         <th><?= $row['images'] ?></th>
         <th><?= $row['price'] ?></th>
-        <th><a href="?action=detail_product&user_id=<?= $row['id'] ?>">Detail</a></th>
+        <th><a href="/wad-php-10-2019/thi/index.php?action=detail_product&user_id=<?= $row['id'] ?>">Detail</a></th>
        
       </tr>
     <?php } ?>
